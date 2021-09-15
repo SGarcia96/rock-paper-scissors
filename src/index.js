@@ -1,5 +1,5 @@
-const randomNumber = Math.floor(Math.random() * 3)
 function computerPlay() {
+  const randomNumber = Math.floor(Math.random() * 3)
   switch (randomNumber) {
     case 0:
       return "Rock"
@@ -12,6 +12,7 @@ function computerPlay() {
 
 let playerScore = 0
 let computerScore = 0
+
 function playRound(playerSelection, computerSelection) {
   let playerSelectionInsensitive = playerSelection.toLowerCase()
   let computerSelectionInsensitive = computerSelection.toLowerCase()
@@ -35,13 +36,12 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
   let rounds = 5
-  playerScore = 0
-  computerScore = 0
+
   do {
     const playerSelection = prompt("Choose: rock | paper | scissors (typing)")
     const computerSelection = computerPlay()
-
     rounds--
+
     console.log(
       playRound(playerSelection, computerSelection) +
         "\n rounds remaining: " +
@@ -52,11 +52,17 @@ function game() {
         computerScore
     )
   } while (rounds)
+
+  console.log(printResult)
+}
+
+const printResult = () => {
   let result =
     playerScore > 2
       ? `You Win! with ${playerScore} score vs ${computerScore} IA score`
       : `You Lose! with ${playerScore} score vs ${computerScore} IA score`
-  console.log(result)
+  return result
 }
+
 /** Start Game **/
 game()
